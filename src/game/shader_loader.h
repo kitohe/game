@@ -24,4 +24,6 @@ public:
 	void set_matrix4(const GLchar* name, glm::mat4 matrix) const;
 
 	void set_vertex_attrib_pointer(const GLchar* name, int size, GLsizei stride, int offset) const;
+
+	void use_program() const;
 };

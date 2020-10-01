@@ -11,7 +11,7 @@ void game::game_loop()
     double start_time = glfwGetTime();
 
     cube cube;
-    cube.gen();
+    cube.gen(shader_loader_);
 
     while (!glfwWindowShouldClose(game_window_))
     {
@@ -69,11 +69,13 @@ void game::init_shaders()
 {
     shader_loader_.create_shader_program(game_constants::cube_vertex_shader_path,
         game_constants::cube_fragment_shader_path);
+
+    shader_loader_.use_program();
 }
 
 void game::init_camera()
 {
-
+    camera_.init(shader_loader_);
 }
 
 bool game::create_game_window()
@@ -107,7 +109,8 @@ void game::run_game()
         return;
     }
 
-
+    init_shaders();
+    init_camera();
 
     game_loop();
         

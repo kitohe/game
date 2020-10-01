@@ -88,3 +88,8 @@ void shader_loader::set_vertex_attrib_pointer(const GLchar* name, int size, GLsi
 	glEnableVertexAttribArray(attribute);
 	glVertexAttribPointer(attribute, size, GL_FLOAT, GL_FALSE, stride, (void*)(offset * sizeof(GLfloat)));
 }
+
+void shader_loader::use_program() const
+{
+	glUseProgram(shader_id_);
+}
