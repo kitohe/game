@@ -1,12 +1,15 @@
 #pragma once
 #include <GLFW/glfw3.h>
 
+#include "game_constants.h"
+
+
 class game
 {
     GLFWwindow *game_window_;
 
-    int window_width_ = 1280;
-    int window_height_ = 720;
+    int window_width_ = game_constants::game_window_width;
+    int window_height_ = game_constants::game_window_height;
     
     void game_loop();
 

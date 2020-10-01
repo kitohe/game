@@ -155,12 +155,15 @@
     <ClCompile Include="game.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="shader_loader.cpp" />
+    <ClCompile Include="texture.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="cube.h" />
     <ClInclude Include="file_operations.h" />
     <ClInclude Include="game.h" />
+    <ClInclude Include="game_constants.h" />
     <ClInclude Include="shader_loader.h" />
+    <ClInclude Include="texture.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="shaders\cube_fragment_shader.glsl" />

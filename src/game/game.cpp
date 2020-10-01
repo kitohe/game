@@ -13,11 +13,9 @@ void game::game_loop()
     cube cube;
     cube.gen();
 
-    // glBindBuffer(GL_ARRAY_BUFFER, c);
-
     while (!glfwWindowShouldClose(game_window_))
     {
-        //glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         glViewport(0, 0, window_width_, window_height_);
         glfwGetFramebufferSize(game_window_, &window_width_, &window_height_);
         glfwPollEvents();
@@ -62,7 +60,7 @@ bool game::init_opengl()
     glfwSwapInterval(1); // enables vsync
     gladLoadGL();
 
-    //glEnable(GL_DEPTH_TEST);
+    glEnable(GL_DEPTH_TEST);
 
     return true;
 }
