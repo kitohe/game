@@ -1,0 +1,2 @@
+C:/Users/dmadr/Documents/Projects/CPP/game/lib/glm/include/glm/out/build/x64-Debug (default)/CMakeFiles/edit_cache.dir
+C:/Users/dmadr/Documents/Projects/CPP/game/lib/glm/include/glm/out/build/x64-Debug (default)/CMakeFiles/rebuild_cache.dir
