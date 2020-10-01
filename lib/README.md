@@ -1,4 +1,6 @@
-Libs used here are not mine and here and licenses to them are listed below:
+# Libs
+
+Libs used here are not mine, and licenses to them are listed below:
 
 - GLAD: https://github.com/Dav1dde/glad/blob/master/LICENSE
 - GLFW: https://www.glfw.org/license.html
