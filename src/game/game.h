@@ -1,12 +1,15 @@
 #pragma once
+#include <glad/glad.h>
 #include <GLFW/glfw3.h>
 
 #include "game_constants.h"
+#include "shader_loader.h"
 
 
 class game
 {
     GLFWwindow *game_window_;
+    shader_loader shader_loader_;
 
     int window_width_ = game_constants::game_window_width;
     int window_height_ = game_constants::game_window_height;
@@ -22,6 +25,10 @@ class game
     static void error_callback(int error, const char* description);
 
     bool init_opengl();
+
+    void init_shaders();
+
+    void init_camera();
 
     bool create_game_window();
   

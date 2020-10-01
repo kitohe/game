@@ -65,6 +65,17 @@ bool game::init_opengl()
     return true;
 }
 
+void game::init_shaders()
+{
+    shader_loader_.create_shader_program(game_constants::cube_vertex_shader_path,
+        game_constants::cube_fragment_shader_path);
+}
+
+void game::init_camera()
+{
+
+}
+
 bool game::create_game_window()
 {
     game_window_ = glfwCreateWindow(window_width_, window_height_, "GAME", nullptr, nullptr);
@@ -95,6 +106,8 @@ void game::run_game()
         std::cerr << "Error while initializing OpenGL. Quitting!" << std::endl;
         return;
     }
+
+
 
     game_loop();
         

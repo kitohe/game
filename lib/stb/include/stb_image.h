@@ -122,7 +122,11 @@ RECENT REVISION HISTORY:
 
 #ifndef STBI_INCLUDE_STB_IMAGE_H
 #define STBI_INCLUDE_STB_IMAGE_H
-#pragma warning disable warning-list
+#pragma warning(disable: 26451)
+#pragma warning(disable: 6262)
+#pragma warning(disable: 28182)
+#pragma warning(disable: 26819)
+
 // DOCUMENTATION
 //
 // Limitations:
