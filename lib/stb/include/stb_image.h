@@ -126,6 +126,8 @@ RECENT REVISION HISTORY:
 #pragma warning(disable: 6262)
 #pragma warning(disable: 28182)
 #pragma warning(disable: 26819)
+#pragma warning(disable: 6011)
+#pragma warning(disable: 6308)
 
 // DOCUMENTATION
 //

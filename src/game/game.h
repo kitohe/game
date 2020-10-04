@@ -1,16 +1,19 @@
 #pragma once
-#include <glad/glad.h>
-#include <GLFW/glfw3.h>
 
 #include "game_constants.h"
 #include "shader_loader.h"
 #include "camera.h"
+#include "texture.h"
+#include "cube.h"
+
+#include <GLFW/glfw3.h>
 
 class game
 {
     GLFWwindow *game_window_;
     shader_loader shader_loader_;
     camera camera_;
+    texture texture_;
 
     int window_width_ = game_constants::game_window_width;
     int window_height_ = game_constants::game_window_height;
@@ -21,7 +24,7 @@ class game
 
     void draw_fps(int fps) const;
 
-    static void key_callback(GLFWwindow *window, int key, int scancode, int action, int mods);
+    void key_callback(GLFWwindow *window);
 
     static void error_callback(int error, const char* description);
 
@@ -30,6 +33,8 @@ class game
     void init_shaders();
 
     void init_camera();
+
+    void init_texture();
 
     bool create_game_window();
   

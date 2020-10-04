@@ -1,8 +1,4 @@
-#include <glad/glad.h>
-#include <iostream>
-
 #include "game.h"
-#include "cube.h"
 
 
 void game::game_loop()
@@ -18,6 +14,9 @@ void game::game_loop()
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         glViewport(0, 0, window_width_, window_height_);
         glfwGetFramebufferSize(game_window_, &window_width_, &window_height_);
+
+        key_callback(game_window_);
+
         glfwPollEvents();
 
         cube.draw();              
@@ -55,7 +54,6 @@ bool game::init_opengl()
         return false;
     
     glfwMakeContextCurrent(game_window_);
-    glfwSetKeyCallback(game_window_, key_callback);
     glfwSetErrorCallback(error_callback);
     glfwSwapInterval(1); // enables vsync
     gladLoadGL();
@@ -78,6 +76,13 @@ void game::init_camera()
     camera_.init(shader_loader_);
 }
 
+void game::init_texture()
+{
+    texture_.load(R"(C:\Users\dmadr\Documents\Projects\CPP\game\assets\textures\marble\marble.jpg)");
+    texture_.generate_texture();
+    texture_.set_active(0);
+}
+
 bool game::create_game_window()
 {
     game_window_ = glfwCreateWindow(window_width_, window_height_, "GAME", nullptr, nullptr);
@@ -90,10 +95,30 @@ void game::draw_fps(const int fps) const
     std::cout << "FPS: " << fps << std::endl;
 }
 
-void game::key_callback(GLFWwindow *window, int key, int scancode, int action, int mods)
+void game::key_callback(GLFWwindow *window)
 {
-    if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)
+    if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
         glfwSetWindowShouldClose(window, GLFW_TRUE);
+
+    if (glfwGetKey(window, GLFW_KEY_UP) == GLFW_PRESS)
+    {
+        std::cout << "UP\n";
+    }
+
+    if (glfwGetKey(window, GLFW_KEY_DOWN) == GLFW_PRESS)
+    {
+        std::cout << "DOWN\n";
+    }
+
+    if (glfwGetKey(window, GLFW_KEY_LEFT) == GLFW_PRESS)
+    {
+        std::cout << "LEFT\n";   
+    }
+
+    if (glfwGetKey(window, GLFW_KEY_RIGHT) == GLFW_PRESS)
+    {
+        std::cout << "RIGHT\n";
+    }
 }
 
 void game::error_callback(int error, const char* description)
@@ -111,6 +136,7 @@ void game::run_game()
 
     init_shaders();
     init_camera();
+    init_texture();
 
     game_loop();
         

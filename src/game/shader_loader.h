@@ -1,9 +1,11 @@
 #pragma once
-#include <glad/glad.h>
+#include <iostream>
 #include <string>
+#include <glad/glad.h>
 #include <glm/glm.hpp>
 #include <glm/gtc/type_ptr.hpp>
 
+#include "file_operations.h"
 
 class shader_loader
 {
@@ -21,6 +23,7 @@ public:
 	GLuint get_shader_id() const;
 
 	void set_float(const GLchar* name, GLfloat value) const;
+	void set_int(const GLchar* name, GLint value) const;
 	void set_matrix4(const GLchar* name, glm::mat4 matrix) const;
 
 	void set_vertex_attrib_pointer(const GLchar* name, int size, GLsizei stride, int offset) const;

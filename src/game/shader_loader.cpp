@@ -1,7 +1,4 @@
-#include <iostream>
-
 #include "shader_loader.h"
-#include "file_operations.h"
 
 
 GLuint shader_loader::create_shader(const std::string& shader_filepath, GLenum type)
@@ -75,6 +72,11 @@ GLuint shader_loader::get_shader_id() const
 void shader_loader::set_float(const GLchar* name, GLfloat value) const
 {
 	glUniform1f(glGetUniformLocation(shader_id_, name), value);
+}
+
+void shader_loader::set_int(const GLchar* name, GLint value) const
+{
+	glUniform1i(glGetUniformLocation(shader_id_, name), value);
 }
 
 void shader_loader::set_matrix4(const GLchar* name, glm::mat4 matrix) const

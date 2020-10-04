@@ -13,6 +13,8 @@
 #include "../gtc/constants.hpp"
 #include "../gtc/matrix_transform.hpp"
 
+#pragma warning(disable: 4201)
+
 namespace glm
 {
 	template<typename T, qualifier Q>
