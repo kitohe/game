@@ -17,7 +17,10 @@ class game
 
     int window_width_ = game_constants::game_window_width;
     int window_height_ = game_constants::game_window_height;
-    
+
+    double cam_x = 0;
+    double cam_y = 0;
+
     void game_loop();
 
     void clean() const;

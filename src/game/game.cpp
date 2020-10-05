@@ -14,9 +14,9 @@ void game::game_loop()
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         glViewport(0, 0, window_width_, window_height_);
         glfwGetFramebufferSize(game_window_, &window_width_, &window_height_);
-
+        
         key_callback(game_window_);
-
+        camera_.update(cam_x / game_constants::game_window_width, cam_y / game_constants::game_window_height);
         glfwPollEvents();
 
         cube.draw();              
@@ -99,6 +99,9 @@ void game::key_callback(GLFWwindow *window)
 {
     if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
         glfwSetWindowShouldClose(window, GLFW_TRUE);
+
+    glfwGetCursorPos(window, &cam_x, &cam_y);
+    std::cout << "X: " << cam_x / game_constants::game_window_width << " Y: " << cam_y / game_constants::game_window_height << std::endl;
 
     if (glfwGetKey(window, GLFW_KEY_UP) == GLFW_PRESS)
     {
