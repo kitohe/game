@@ -2,9 +2,12 @@
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
+#include <functional>
 
 #include "game_constants.h"
 #include "shader_loader.h"
+#include "window.h"
+
 
 class camera
 {
@@ -18,12 +21,19 @@ class camera
 
     float camera_speed = 5.f;
 
-    shader_loader shader_loader_;
+
+    window& window_;
+    shader_loader& shader_loader_;
+
+    void move_cam_forward();
+    void move_cam_backward();
+    void move_cam_left();
+    void move_cam_right();
 
 public:
-    camera();
+    camera(window& window, shader_loader& shader_loader);
 
-    void init(shader_loader shader_loader);
+    void init(window& window, shader_loader shader_loader);
 
     void update(double cam_x, double cam_y);
 

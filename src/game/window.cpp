@@ -1,5 +1,15 @@
 #include "window.h"
 
+window::window()
+{
+    init();
+}
+
+window::~window()
+{
+    close();
+}
+
 void window::init()
 {
     if (!glfwInit())
@@ -7,9 +17,11 @@ void window::init()
 
     create_window();
 
+    glfwMakeContextCurrent(window_);
     glfwSetErrorCallback(application_event::error_callback);
     glfwSetWindowCloseCallback(window_, application_event::window_closing_callback);
     glfwSetKeyCallback(window_, application_event::key_callback);
+    glfwSetWindowUserPointer(window_, this);
     enable_vsync(true);
     gladLoadGL();
 }
@@ -29,16 +41,6 @@ void window::close()
     glfwTerminate();
 }
 
-window::window()
-{
-    init();
-}
-
-window::~window()
-{
-    close();
-}
-
 GLFWwindow* window::get_window() const
 {
     return window_;
@@ -47,4 +49,17 @@ GLFWwindow* window::get_window() const
 void window::enable_vsync(bool enable)
 {
    enable ? glfwSwapInterval(1) : glfwSwapInterval(0);
+}
+
+void window::add_key_binding(int key, const std::function<void()> callback)
+{
+    bindings_[key].push_back(callback);
+}
+
+void window::on_key_press(int key)
+{
+    for (const auto& callback : bindings_[key])
+    {
+        callback();
+    }
 }
