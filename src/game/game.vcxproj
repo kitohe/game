@@ -150,22 +150,28 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\..\lib\glad\src\glad.c" />
+    <ClCompile Include="application_event.cpp" />
     <ClCompile Include="camera.cpp" />
     <ClCompile Include="cube.cpp" />
     <ClCompile Include="file_operations.cpp" />
     <ClCompile Include="game.cpp" />
+    <ClCompile Include="keyboard_event.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="shader_loader.cpp" />
     <ClCompile Include="texture.cpp" />
+    <ClCompile Include="window.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="application_event.h" />
     <ClInclude Include="camera.h" />
     <ClInclude Include="cube.h" />
     <ClInclude Include="file_operations.h" />
     <ClInclude Include="game.h" />
     <ClInclude Include="game_constants.h" />
+    <ClInclude Include="keyboard_event.h" />
     <ClInclude Include="shader_loader.h" />
     <ClInclude Include="texture.h" />
+    <ClInclude Include="window.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="shaders\cube_fragment_shader.glsl" />
