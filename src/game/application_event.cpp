@@ -23,6 +23,11 @@ void application_event::key_callback(GLFWwindow* app_window, int key, int scanco
     }
 }
 
+void application_event::mouse_pos_callback(GLFWwindow* window, double x, double y)
+{
+    std::cout << "MOUSE AT: " << x << " " << y << std::endl;
+}
+
 void application_event::error_callback(int error, const char* description)
 {
     std::cerr << error <<  " Error: " << description << std::endl; 

@@ -7,7 +7,7 @@ void game::game_loop()
     double start_time = glfwGetTime();
 
     cube cube;
-    cube.gen(*shader_loader_);
+    cube.gen(shader_loader_);
 
     auto* window = window_.get_window();
 
@@ -38,15 +38,15 @@ void game::game_loop()
 
 void game::init_shaders()
 {
-    shader_loader_->create_shader_program(game_constants::cube_vertex_shader_path,
+    shader_loader_.create_shader_program(game_constants::cube_vertex_shader_path,
         game_constants::cube_fragment_shader_path);
 
-    shader_loader_->use_program();
+    shader_loader_.use_program();
 }
 
 void game::init_camera()
 {
-    camera_->init(window_, *shader_loader_);
+    return;
 }
 
 void game::init_texture()
@@ -56,6 +56,11 @@ void game::init_texture()
     texture_.set_active(0);
 }
 
+game::game()
+{
+    camera_ = std::make_unique<camera>(shader_loader_);
+}
+
 void game::draw_fps(const int fps) const
 {
     std::cout << "FPS: " << fps << std::endl;
@@ -63,6 +68,7 @@ void game::draw_fps(const int fps) const
 
 void game::run_game()
 {
+
     init_shaders();
     init_camera();
     init_texture();

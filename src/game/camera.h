@@ -5,6 +5,7 @@
 #include <functional>
 
 #include "game_constants.h"
+#include "keyboard_binding.h"
 #include "shader_loader.h"
 #include "window.h"
 
@@ -21,22 +22,22 @@ class camera
 
     float camera_speed = 5.f;
 
-
-    window& window_;
     shader_loader& shader_loader_;
+    keyboard_binding key_binds_;
+
+    void add_key_binds();
 
     void move_cam_forward();
     void move_cam_backward();
     void move_cam_left();
     void move_cam_right();
-
+    
 public:
-    camera(window& window, shader_loader& shader_loader);
+    camera(shader_loader& shader_loader);
 
-    void init(window& window, shader_loader shader_loader);
+    void init_camera(shader_loader& shader_loader);
 
     void update(double cam_x, double cam_y);
 
     void update_shader() const;
 };
-

@@ -9,11 +9,14 @@
 
 #include <GLFW/glfw3.h>
 
+#include <memory>
+
+
 class game
 {
     window window_;
-    shader_loader* shader_loader_;
-    camera* camera_;
+    shader_loader shader_loader_;
+    std::unique_ptr<camera> camera_;
     texture texture_;
 
     int window_width_ = game_constants::game_window_width;
@@ -33,11 +36,7 @@ class game
     void init_texture();
   
 public:
-    game()
-    {
-        shader_loader_ = new shader_loader();
-        camera_ = new camera(window_, *shader_loader_);
-    }
+    game();
 
     void run_game();
 };

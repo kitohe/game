@@ -7,6 +7,7 @@
 
 #include "file_operations.h"
 
+
 class shader_loader
 {
 	GLuint shader_id_;

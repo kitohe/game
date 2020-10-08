@@ -20,8 +20,10 @@ void camera::move_cam_right()
     current_pos_.z += 0.05f * camera_speed;
 }
 
-camera::camera(window& window, shader_loader& shader_loader) : window_(window), shader_loader_(shader_loader)
+camera::camera(shader_loader& shader_loader) : shader_loader_(shader_loader)
 {
+    add_key_binds();
+
     current_pos_ = glm::vec3(0.0f, 2.5f, 2.5f);
     center_ = glm::vec3(0.0f, 0.0f, 0.0f);
     up_ = glm::vec3(0.0f, 1.0f, 0.0f);
@@ -33,15 +35,12 @@ camera::camera(window& window, shader_loader& shader_loader) : window_(window), 
                                         1.0f, 10.0f);
 }
 
-void camera::init(window& window, shader_loader shader_loader)
+void camera::add_key_binds()
 {
-    shader_loader_ = shader_loader;
-    window_ = window;
-
-    window_.add_key_binding(GLFW_KEY_W, std::function<void()>([this] {move_cam_forward();}));
-    window_.add_key_binding(GLFW_KEY_S, std::function<void()>([this] {move_cam_backward();}));
-    window_.add_key_binding(GLFW_KEY_A, std::function<void()>([this] {move_cam_left();}));
-    window_.add_key_binding(GLFW_KEY_D, std::function<void()>([this] {move_cam_right();}));
+    key_binds_.add_key_bind(GLFW_KEY_W, std::function<void()>([this] {move_cam_forward();}));
+    key_binds_.add_key_bind(GLFW_KEY_S, std::function<void()>([this] {move_cam_backward();}));
+    key_binds_.add_key_bind(GLFW_KEY_A, std::function<void()>([this] {move_cam_left();}));
+    key_binds_.add_key_bind(GLFW_KEY_D, std::function<void()>([this] {move_cam_right();}));
 }
 
 void camera::update(double cam_x, double cam_y)
@@ -59,4 +58,9 @@ void camera::update_shader() const
     shader_loader_.set_matrix4("model", model_);
     shader_loader_.set_matrix4("view", view_);
     shader_loader_.set_matrix4("perspective", perspective_);
+}
+
+void camera::init_camera(shader_loader& shader_loader)
+{
+    shader_loader_ = shader_loader;
 }
