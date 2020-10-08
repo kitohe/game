@@ -60,13 +60,7 @@ void window::on_key_press(int key)
 {
     auto binds = key_binds_.get_key_binds();
 
-    for (auto b : binds)
-    {
-        std::cout << b.first << std::endl;
-    }
-
-
-    for (const auto func: binds[key])
+    for (const auto& func: binds[key])
     {
         func();
     }
