@@ -8,19 +8,7 @@ void application_event::window_closing_callback(GLFWwindow* window)
 void application_event::key_callback(GLFWwindow* app_window, int key, int scancode, int action, int mods)
 {
     window& win = *(window*)glfwGetWindowUserPointer(app_window);
-
-    switch (action)
-    {
-        case GLFW_PRESS:
-        {
-            win.on_key_press(key);
-            break;
-        }
-        default:
-        {
-            break;
-        }
-    }
+    win.on_key_press(key);
 }
 
 void application_event::mouse_pos_callback(GLFWwindow* window, double x, double y)
