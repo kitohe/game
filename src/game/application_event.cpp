@@ -11,9 +11,11 @@ void application_event::key_callback(GLFWwindow* app_window, int key, int scanco
     win.on_key_press(key);
 }
 
-void application_event::mouse_pos_callback(GLFWwindow* window, double x, double y)
+void application_event::mouse_pos_callback(GLFWwindow* app_window, double x, double y)
 {
     std::cout << "MOUSE AT: " << x << " " << y << std::endl;
+    window& win = *(window*)glfwGetWindowUserPointer(app_window);
+    //win.on_mouse_move(x, y);
 }
 
 void application_event::error_callback(int error, const char* description)

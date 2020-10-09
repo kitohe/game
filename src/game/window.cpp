@@ -37,11 +37,11 @@ void window::create_window()
         "GAME", nullptr, nullptr);
 }
 
-void window::close()
+void window::close() const
 {
     if (window_ == nullptr)
         return;
-
+    
     glfwDestroyWindow(window_);
     glfwTerminate();
 }

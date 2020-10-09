@@ -10,7 +10,7 @@ void game::game_loop()
     cube.gen(shader_loader_);
 
     auto* window = window_.get_window();
-
+    glEnable(GL_DEPTH_TEST);
     while (!glfwWindowShouldClose(window_.get_window()))
     {
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);

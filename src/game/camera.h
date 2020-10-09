@@ -20,7 +20,7 @@ class camera
     glm::mat4 view_;
     glm::mat4 perspective_;
 
-    float camera_speed = 5.f;
+    float camera_speed = 0.5f;
 
     shader_loader& shader_loader_;
     keyboard_binding key_binds_;

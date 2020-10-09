@@ -19,7 +19,10 @@ class window
 
     void create_window();
 
-    void close();
+    void close() const;
+
+    double cursor_pos_x;
+    double cursor_pos_y;
 
 public:
 
@@ -32,4 +35,9 @@ public:
     void enable_vsync(bool enable);
 
     void on_key_press(int key);
+
+    void set_cursor_pos(double x, double y);
+
+    std::tuple<double,double> get_cursor_pos();
+    
 };
