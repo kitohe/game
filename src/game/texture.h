@@ -17,5 +17,5 @@ public:
 
     void load(const std::string& filename);
     void generate_texture();
-    void set_active(unsigned int texture_offset) const;
+    void set_active(uint32_t texture_offset) const;
 };

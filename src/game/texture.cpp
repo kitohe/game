@@ -34,7 +34,7 @@ void texture::generate_texture()
     stbi_image_free(image);
 }
 
-void texture::set_active(const unsigned int texture_offset) const
+void texture::set_active(const uint32_t texture_offset) const
 {
     glBindTexture(GL_TEXTURE_2D, texture_id);
 }
