@@ -20,7 +20,14 @@ class camera
     glm::mat4 view_;
     glm::mat4 perspective_;
 
-    float camera_speed = 0.5f;
+    const float camera_speed = 0.5f;
+    const float camera_sens = 0.1f;
+
+    double last_cursor_pos_x = static_cast<double>(game_constants::game_window_width) / 2;
+    double last_cursor_pos_y = static_cast<double>(game_constants::game_window_height) / 2;
+
+    float yaw = -90.0f;
+    float pitch = 0.0f;
 
     shader_loader& shader_loader_;
     keyboard_binding key_binds_;

@@ -2,12 +2,12 @@
 
 void camera::move_cam_forward()
 {
-   current_pos_ += camera_speed * up_;
+   current_pos_ += camera_speed * center_;
 }
 
 void camera::move_cam_backward()
 {
-    current_pos_ -= camera_speed * up_;
+    current_pos_ -= camera_speed * center_;
 }
 
 void camera::move_cam_left()
@@ -25,11 +25,11 @@ camera::camera(shader_loader& shader_loader) : shader_loader_(shader_loader)
     add_key_binds();
 
     current_pos_ = glm::vec3(0.0f, 0.0f, 3.0f);
-    center_ = glm::vec3(0.0f, 0.0f, -1.0f);
-    up_ = glm::vec3(0.0f, 1.0f, 0.0f);
+    center_      = glm::vec3(0.0f, 0.0f, -1.0f);
+    up_          = glm::vec3(0.0f, 1.0f, 0.0f);
 
-    model_ = glm::mat4(1.0f);
-    view_ = glm::lookAt(current_pos_, current_pos_ + center_, up_);
+    model_       = glm::mat4(1.0f);
+    view_        = glm::lookAt(current_pos_, current_pos_ + center_, up_);
     perspective_ = glm::perspective(glm::radians(45.0f), 
                                         game_constants::game_window_aspect_ratio,
                                         1.0f, 10.0f);
@@ -45,12 +45,33 @@ void camera::add_key_binds()
 
 void camera::update(double cam_x, double cam_y)
 {
-    center_.x = (float)cam_x * camera_speed;
-    center_.y = (float)cam_y * camera_speed;
-    //center_.y+=0.01f;
-    //std::cout << current_pos_.x << " ";
-    view_ = glm::lookAt(current_pos_, center_, up_);
+    double x_offset = cam_x - last_cursor_pos_x;
+    double y_offset = last_cursor_pos_y - cam_y;
+    last_cursor_pos_x = cam_x;
+    last_cursor_pos_y = cam_y;
+
+    x_offset *= camera_sens;
+    y_offset *= camera_sens;
+
+    yaw += x_offset;
+    pitch += y_offset;
+
+    if(pitch > 89.0f)
+        pitch =  89.0f;
+    if(pitch < -89.0f)
+        pitch = -89.0f;
+    
+
+    glm::vec3 direction;
+    direction.x = cos(glm::radians(yaw)) * cos(glm::radians(pitch));
+    direction.y = sin(glm::radians(pitch));
+    direction.z = sin(glm::radians(yaw)) * cos(glm::radians(pitch));
+    center_ = glm::normalize(direction);
+
+    view_ = glm::lookAt(current_pos_, current_pos_ + center_, up_);
     update_shader();
+
+
 }
 
 void camera::update_shader() const

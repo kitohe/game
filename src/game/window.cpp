@@ -24,6 +24,8 @@ void window::init()
     glfwSetKeyCallback(window_, application_event::key_callback);
     glfwSetCursorPosCallback(window_, application_event::mouse_pos_callback);
 
+    glfwSetInputMode(window_, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+
     glfwSetWindowUserPointer(window_, this);
 
     enable_vsync(true);
@@ -64,4 +66,10 @@ void window::on_key_press(int key)
     {
         func();
     }
+}
+
+void window::set_cursor_pos(double x, double y)
+{
+    cursor_pos_x = x;
+    cursor_pos_y = y;
 }

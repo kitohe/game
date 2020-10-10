@@ -15,7 +15,7 @@ void application_event::mouse_pos_callback(GLFWwindow* app_window, double x, dou
 {
     std::cout << "MOUSE AT: " << x << " " << y << std::endl;
     window& win = *(window*)glfwGetWindowUserPointer(app_window);
-    //win.on_mouse_move(x, y);
+    win.set_cursor_pos(x, y);
 }
 
 void application_event::error_callback(int error, const char* description)

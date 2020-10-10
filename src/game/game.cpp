@@ -13,12 +13,12 @@ void game::game_loop()
     glEnable(GL_DEPTH_TEST);
     while (!glfwWindowShouldClose(window_.get_window()))
     {
+        glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         glViewport(0, 0, window_width_, window_height_);
         glfwGetFramebufferSize(window, &window_width_, &window_height_);
         
-        
-        camera_->update(cam_x / game_constants::game_window_width, cam_y / game_constants::game_window_height);
+        camera_->update(window_.get_mouse_x_pos(), window_.get_mouse_y_pos());
         glfwPollEvents();
 
         cube.draw();              

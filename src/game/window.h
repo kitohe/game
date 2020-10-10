@@ -38,6 +38,7 @@ public:
 
     void set_cursor_pos(double x, double y);
 
-    std::tuple<double,double> get_cursor_pos();
-    
+    double get_mouse_x_pos() const { return cursor_pos_x; }
+
+    double get_mouse_y_pos() const { return cursor_pos_y; }
 };
