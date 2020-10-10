@@ -2,22 +2,22 @@
 
 void camera::move_cam_forward()
 {
-   current_pos_ += camera_speed * center_;
+   current_pos_ += camera_speed * center_ * time::get_delta_time();
 }
 
 void camera::move_cam_backward()
 {
-    current_pos_ -= camera_speed * center_;
+    current_pos_ -= camera_speed * center_ * time::get_delta_time();
 }
 
 void camera::move_cam_left()
 {
-    current_pos_ -= glm::normalize(glm::cross(center_, up_)) * camera_speed;
+    current_pos_ -= glm::normalize(glm::cross(center_, up_)) * camera_speed * time::get_delta_time();
 }
 
 void camera::move_cam_right()
 {
-    current_pos_ += glm::normalize(glm::cross(center_, up_)) * camera_speed;
+    current_pos_ += glm::normalize(glm::cross(center_, up_)) * camera_speed * time::get_delta_time();
 }
 
 camera::camera(shader_loader& shader_loader) : shader_loader_(shader_loader)
@@ -66,8 +66,6 @@ void camera::update(double cam_x, double cam_y)
 
     view_ = glm::lookAt(current_pos_, current_pos_ + center_, up_);
     update_shader();
-
-
 }
 
 void camera::update_shader() const

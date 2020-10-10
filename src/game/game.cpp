@@ -20,11 +20,11 @@ void game::game_loop()
         
         camera_->update(window_.get_mouse_x_pos(), window_.get_mouse_y_pos());
         glfwPollEvents();
-
+        
         cube.draw();              
         glfwSwapBuffers(window);
        
-
+        time::update_time(glfwGetTime());
         if (glfwGetTime() - start_time >= 1.0)
         {
             draw_fps(frame_counter);

@@ -6,6 +6,7 @@
 #include "camera.h"
 #include "texture.h"
 #include "cube.h"
+#include "time.h"
 
 #include <GLFW/glfw3.h>
 

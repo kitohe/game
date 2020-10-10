@@ -8,6 +8,7 @@
 #include "keyboard_binding.h"
 #include "shader_loader.h"
 #include "window.h"
+#include "time.h"
 
 
 class camera
@@ -15,12 +16,12 @@ class camera
     glm::vec3 current_pos_;
     glm::vec3 center_;
     glm::vec3 up_;
-
+    
     glm::mat4 model_;
     glm::mat4 view_;
     glm::mat4 perspective_;
 
-    const float camera_speed = 0.5f;
+    const float camera_speed = 2.5f;
     const float camera_sens = 0.1f;
 
     double last_cursor_pos_x = static_cast<double>(game_constants::game_window_width) / 2;
