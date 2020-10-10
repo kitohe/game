@@ -13,4 +13,3 @@ public:
     static void mouse_pos_callback(GLFWwindow* app_window, double x, double y);
     static void error_callback(int error, const char* description);
 };
-

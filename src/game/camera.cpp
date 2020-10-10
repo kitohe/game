@@ -56,11 +56,7 @@ void camera::update(double cam_x, double cam_y)
     yaw += x_offset;
     pitch += y_offset;
 
-    if(pitch > 89.0f)
-        pitch =  89.0f;
-    if(pitch < -89.0f)
-        pitch = -89.0f;
-    
+    pitch = glm::clamp(pitch, -89.9f, 89.9f);
 
     glm::vec3 direction;
     direction.x = cos(glm::radians(yaw)) * cos(glm::radians(pitch));

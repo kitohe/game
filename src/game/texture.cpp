@@ -30,6 +30,8 @@ void texture::generate_texture()
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
     glGenerateMipmap(GL_TEXTURE_2D);
+
+    stbi_image_free(image);
 }
 
 void texture::set_active(const unsigned int texture_offset) const
