@@ -66,7 +66,7 @@ float perlin_noise::get_interpolated_noise(float x, float y)
 float perlin_noise::interpolate(float a, float b, float blend)
 {
     double theta = blend * pi();
-    float f = static_cast<float>((1.0f - std::cos(theta)) * 0.5f);
+    float f = static_cast<float>((1.0 - cos(theta)) * 0.5);
     return a * (1 - f) + b * f;
 }
 

@@ -3,8 +3,6 @@
 
 void cube::gen(shader_loader shader_loader)
 {
-    GLuint vbo;
-
     GLfloat vertices[] = {
 	    -0.5f, -0.5f, -0.5f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f,
 	     0.5f, -0.5f, -0.5f, 1.0f, 1.0f, 1.0f, 1.0f, 0.0f,
@@ -56,9 +54,9 @@ void cube::gen(shader_loader shader_loader)
 		-1.0f, -1.0f, -0.5f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f
     };
 
-    glGenBuffers(1, &vbo);
-    glBindBuffer(GL_ARRAY_BUFFER, vbo);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+    cube_vbo = std::make_unique<vbo>(GL_ARRAY_BUFFER, GL_STATIC_DRAW);
+	cube_vbo->bind();
+	cube_vbo->alloc_and_store(sizeof(vertices), vertices);
 
 	shader_loader.set_vertex_attrib_pointer("position", 3, 8 * sizeof(GLfloat), 0);
 	shader_loader.set_vertex_attrib_pointer("color", 3, 8 * sizeof(GLfloat), 3);
