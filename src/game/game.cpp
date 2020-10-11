@@ -23,7 +23,7 @@ void game::game_loop()
         
         cube.draw();              
         glfwSwapBuffers(window);
-       
+        std::cout << noise_->get_perlin_noise(123,512) << std::endl;
         time::update_time(glfwGetTime());
         if (glfwGetTime() - start_time >= 1.0)
         {
@@ -44,11 +44,6 @@ void game::init_shaders()
     shader_loader_.use_program();
 }
 
-void game::init_camera()
-{
-    return;
-}
-
 void game::init_texture()
 {
     texture_.load(R"(C:\Users\dmadr\Documents\Projects\CPP\game\assets\textures\marble\marble.jpg)");
@@ -59,6 +54,7 @@ void game::init_texture()
 game::game()
 {
     camera_ = std::make_unique<camera>(shader_loader_);
+    noise_ = std::make_unique<perlin_noise>(3, 0.35f, 10.0f);
 }
 
 void game::draw_fps(const int fps) const
@@ -68,9 +64,7 @@ void game::draw_fps(const int fps) const
 
 void game::run_game()
 {
-
     init_shaders();
-    init_camera();
     init_texture();
 
     game_loop();

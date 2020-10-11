@@ -1,5 +1,7 @@
 #pragma once
 
+#include <memory>
+
 #include "game_constants.h"
 #include "window.h"
 #include "shader_loader.h"
@@ -8,9 +10,7 @@
 #include "cube.h"
 #include "time.h"
 
-#include <GLFW/glfw3.h>
-
-#include <memory>
+#include "perlin_noise.h"
 
 
 class game
@@ -19,6 +19,8 @@ class game
     shader_loader shader_loader_;
     std::unique_ptr<camera> camera_;
     texture texture_;
+
+    std::unique_ptr<perlin_noise> noise_;
 
     int window_width_ = game_constants::game_window_width;
     int window_height_ = game_constants::game_window_height;
@@ -31,8 +33,6 @@ class game
     void draw_fps(int fps) const;
 
     void init_shaders();
-
-    void init_camera();
 
     void init_texture();
   

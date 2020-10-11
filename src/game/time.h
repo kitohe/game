@@ -5,7 +5,7 @@ class time
     inline static float last_frame_time = 0.0f;
 
 public:
-    static void update_time(float current_frame_time);
+    static void update_time(double current_frame_time);
     static float get_delta_time();
 };
 

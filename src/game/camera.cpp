@@ -53,8 +53,8 @@ void camera::update(double cam_x, double cam_y)
     x_offset *= camera_sens;
     y_offset *= camera_sens;
 
-    yaw += x_offset;
-    pitch += y_offset;
+    yaw += static_cast<float>(x_offset);
+    pitch += static_cast<float>(y_offset);
 
     pitch = glm::clamp(pitch, -89.9f, 89.9f);
 
@@ -63,7 +63,7 @@ void camera::update(double cam_x, double cam_y)
     direction.y = sin(glm::radians(pitch));
     direction.z = sin(glm::radians(yaw)) * cos(glm::radians(pitch));
     center_ = glm::normalize(direction);
-
+    
     view_ = glm::lookAt(current_pos_, current_pos_ + center_, up_);
     update_shader();
 }
