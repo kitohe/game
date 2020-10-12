@@ -12,5 +12,9 @@ void vao::unbind() const
 
 vao::~vao()
 {
-    
+    glDeleteVertexArrays(1, &id_);
+    for (auto vbo : vbos_)
+    {
+        vbo.remove();
+    }
 }

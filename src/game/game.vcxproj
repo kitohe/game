@@ -151,6 +151,7 @@
   <ItemGroup>
     <ClCompile Include="..\..\lib\glad\src\glad.c" />
     <ClCompile Include="application_event.cpp" />
+    <ClCompile Include="attribute.cpp" />
     <ClCompile Include="camera.cpp" />
     <ClCompile Include="cube.cpp" />
     <ClCompile Include="file_operations.cpp" />
@@ -170,6 +171,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="application_event.h" />
+    <ClInclude Include="attribute.h" />
     <ClInclude Include="camera.h" />
     <ClInclude Include="cube.h" />
     <ClInclude Include="file_operations.h" />
