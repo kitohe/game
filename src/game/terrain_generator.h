@@ -11,6 +11,6 @@ public:
 
     terrain_generator(perlin_noise& perlin_noise) : perlin_noise_(perlin_noise) { }
 
-
+    virtual void clean_up() = 0;
 };
 

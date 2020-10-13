@@ -163,6 +163,7 @@
     <ClCompile Include="shader_loader.cpp" />
     <ClCompile Include="terrain.cpp" />
     <ClCompile Include="terrain_generator.cpp" />
+    <ClCompile Include="terrain_renderer.cpp" />
     <ClCompile Include="texture.cpp" />
     <ClCompile Include="time.cpp" />
     <ClCompile Include="uniform.cpp" />
@@ -187,6 +188,7 @@
     <ClInclude Include="shader_loader.h" />
     <ClInclude Include="terrain.h" />
     <ClInclude Include="terrain_generator.h" />
+    <ClInclude Include="terrain_renderer.h" />
     <ClInclude Include="texture.h" />
     <ClInclude Include="time.h" />
     <ClInclude Include="uniform.h" />

@@ -37,6 +37,12 @@
     <Filter Include="Source Files\engine\uniform">
       <UniqueIdentifier>{1dec4b8c-3502-46b3-b421-be85fab708e3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\renderer">
+      <UniqueIdentifier>{31c69a58-0f27-486f-8c7a-573147047cee}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\renderer">
+      <UniqueIdentifier>{a0efadc1-8b0d-4177-be73-87d9684688cc}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -84,9 +90,6 @@
     <ClCompile Include="terrain_generator.cpp">
       <Filter>Source Files\terrain</Filter>
     </ClCompile>
-    <ClCompile Include="terrain.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="vbo.cpp">
       <Filter>Source Files\engine</Filter>
     </ClCompile>
@@ -107,6 +110,12 @@
     </ClCompile>
     <ClCompile Include="uniform_mat4.cpp">
       <Filter>Source Files\engine\uniform</Filter>
+    </ClCompile>
+    <ClCompile Include="terrain.cpp">
+      <Filter>Source Files\terrain</Filter>
+    </ClCompile>
+    <ClCompile Include="terrain_renderer.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -152,9 +161,6 @@
     <ClInclude Include="terrain_generator.h">
       <Filter>Header Files\terrain</Filter>
     </ClInclude>
-    <ClInclude Include="terrain.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="vbo.h">
       <Filter>Header Files\engine</Filter>
     </ClInclude>
@@ -175,6 +181,12 @@
     </ClInclude>
     <ClInclude Include="uniform_mat4.h">
       <Filter>Header Files\engine\uniform</Filter>
+    </ClInclude>
+    <ClInclude Include="terrain.h">
+      <Filter>Header Files\terrain</Filter>
+    </ClInclude>
+    <ClInclude Include="terrain_renderer.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
