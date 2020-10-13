@@ -31,6 +31,12 @@
     <Filter Include="Source Files\engine">
       <UniqueIdentifier>{286077de-7de8-4b5f-872b-02e464935052}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\engine\uniform">
+      <UniqueIdentifier>{aecbe74d-4597-4e52-a4c4-ba870aa7cc5e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\engine\uniform">
+      <UniqueIdentifier>{1dec4b8c-3502-46b3-b421-be85fab708e3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -88,7 +94,19 @@
       <Filter>Source Files\engine</Filter>
     </ClCompile>
     <ClCompile Include="attribute.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\engine</Filter>
+    </ClCompile>
+    <ClCompile Include="uniform.cpp">
+      <Filter>Source Files\engine\uniform</Filter>
+    </ClCompile>
+    <ClCompile Include="uniform_float.cpp">
+      <Filter>Source Files\engine\uniform</Filter>
+    </ClCompile>
+    <ClCompile Include="uniform_int.cpp">
+      <Filter>Source Files\engine\uniform</Filter>
+    </ClCompile>
+    <ClCompile Include="uniform_mat4.cpp">
+      <Filter>Source Files\engine\uniform</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -144,7 +162,19 @@
       <Filter>Header Files\engine</Filter>
     </ClInclude>
     <ClInclude Include="attribute.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="uniform.h">
+      <Filter>Header Files\engine\uniform</Filter>
+    </ClInclude>
+    <ClInclude Include="uniform_float.h">
+      <Filter>Header Files\engine\uniform</Filter>
+    </ClInclude>
+    <ClInclude Include="uniform_int.h">
+      <Filter>Header Files\engine\uniform</Filter>
+    </ClInclude>
+    <ClInclude Include="uniform_mat4.h">
+      <Filter>Header Files\engine\uniform</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
