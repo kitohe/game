@@ -115,7 +115,7 @@
       <Filter>Source Files\terrain</Filter>
     </ClCompile>
     <ClCompile Include="terrain_renderer.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\renderer</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -186,7 +186,7 @@
       <Filter>Header Files\terrain</Filter>
     </ClInclude>
     <ClInclude Include="terrain_renderer.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\renderer</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

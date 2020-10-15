@@ -13,8 +13,9 @@ class uniform
     int location_;
 
 protected:
-
     explicit uniform(const GLchar* name) : name_(name) {  }
+
+public:
     void store_uniform_location(int programId);
     [[nodiscard]] int get_location() const;
 };

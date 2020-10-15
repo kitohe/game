@@ -1,11 +1,13 @@
 #pragma once
 #include <iostream>
 #include <string>
+#include <vector>
 #include <glad/glad.h>
 #include <glm/glm.hpp>
 #include <glm/gtc/type_ptr.hpp>
 
 #include "file_operations.h"
+#include "uniform.h"
 
 
 class shader_loader
@@ -13,8 +15,9 @@ class shader_loader
 	GLuint shader_id_;
 
 	GLuint create_shader(const std::string& shader_filepath, GLenum type);
-	void check_shader_status(GLuint shader);
-	void check_program_status(GLuint program);
+	void check_shader_status(GLuint shader) const;
+	void check_linking_status(GLuint program) const;
+	void check_program_status() const;
 	
 public:
 
@@ -28,6 +31,8 @@ public:
 	void set_matrix4(const GLchar* name, glm::mat4 matrix) const;
 
 	void set_vertex_attrib_pointer(const GLchar* name, int size, GLsizei stride, int offset) const;
+
+	void store_uniform_locations(std::vector<uniform> uniforms) const;
 
 	void use_program() const;
 };
