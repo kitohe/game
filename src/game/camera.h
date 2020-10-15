@@ -7,6 +7,7 @@
 #include "game_constants.h"
 #include "keyboard_binding.h"
 #include "shader_loader.h"
+#include "uniform_mat4.h"
 #include "window.h"
 #include "time.h"
 

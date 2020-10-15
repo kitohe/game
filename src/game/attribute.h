@@ -1,7 +1,6 @@
 #pragma once
 
 #include <glad/glad.h>
-#include <cstdint>
 
 
 class attribute
@@ -10,18 +9,21 @@ class attribute
     GLint size_;
     GLenum type_;
     GLboolean normalized_;
+    GLsizei stride_;
+    int offset_;
 
 public:
 
-    attribute(GLuint id, GLint size, GLenum type)
-        : id_(id), size_(size), type_(type), normalized_(GL_FALSE) {  }
+    attribute(GLuint id, GLint size, GLenum type, GLsizei stride, int offset);
 
-    attribute(GLuint id, GLint size, GLenum type, GLboolean normalized)
-        : id_(id), size_(size), type_(type), normalized_(normalized) {  }
+    attribute(GLuint id, GLint size, GLenum type, GLsizei stride, int offset, GLboolean normalized);
 
     void enable() const;
     void disable() const;
     void set_pointer(int offset, int stride) const;
+
+    [[nodiscard]] GLsizei get_stride() const { return stride_; }
+    [[nodiscard]] int get_offset() const { return offset_; }
 
 private:
 

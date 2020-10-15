@@ -70,9 +70,21 @@ void camera::update(double cam_x, double cam_y)
 
 void camera::update_shader() const
 {
-    shader_loader_.set_matrix4("model", model_);
-    shader_loader_.set_matrix4("view", view_);
-    shader_loader_.set_matrix4("perspective", perspective_);
+    uniform_mat4 model("model");
+    uniform_mat4 view("view");
+    uniform_mat4 perspective("perspective");
+
+    model.store_uniform_location(shader_loader_.get_shader_id());
+    view.store_uniform_location(shader_loader_.get_shader_id());
+    perspective.store_uniform_location(shader_loader_.get_shader_id());
+
+    model.load_matrix(model_);
+    view.load_matrix(view_);
+    perspective.load_matrix(perspective_);
+
+    // shader_loader_.set_matrix4("model", model_);
+    // shader_loader_.set_matrix4("view", view_);
+    // shader_loader_.set_matrix4("perspective", perspective_);
 }
 
 void camera::init_camera(shader_loader& shader_loader)

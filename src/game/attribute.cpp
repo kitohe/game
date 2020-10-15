@@ -1,5 +1,21 @@
 #include "attribute.h"
 
+#include <cstdint>
+
+attribute::attribute(GLuint id, GLint size, GLenum type, GLsizei stride, int offset): id_(id), size_(size), type_(type),
+                                                                                      normalized_(false),
+                                                                                      stride_(stride),
+                                                                                      offset_(offset)
+{
+}
+
+attribute::attribute(GLuint id, GLint size, GLenum type, GLsizei stride, int offset, GLboolean normalized): id_(id),
+    size_(size), type_(type),
+    normalized_(normalized),
+    stride_(stride), offset_(offset)
+{
+}
+
 void attribute::enable() const
 {
     glEnableVertexAttribArray(id_);
