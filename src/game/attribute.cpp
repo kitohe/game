@@ -10,10 +10,10 @@ void attribute::disable() const
     glDisableVertexAttribArray(id_);
 }
 
-void attribute::set_pointer(int offset, int stride) const
+void attribute::link() const
 {
-    int ptr = get_size() * offset;
-    glVertexAttribPointer(id_, size_, type_, normalized_, stride, reinterpret_cast<void*>(static_cast<intptr_t>(ptr)));
+    const int ptr = get_size() * offset_;
+    glVertexAttribPointer(id_, size_, type_, normalized_, stride_, reinterpret_cast<void*>(static_cast<intptr_t>(ptr)));
 }
 
 int attribute::get_size() const

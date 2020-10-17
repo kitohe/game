@@ -190,8 +190,8 @@
     <ClInclude Include="window.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="shaders\cube_fragment_shader.glsl" />
-    <None Include="shaders\cube_vertex_shader.glsl" />
+    <None Include="shaders\cube_fragment_shader.frag" />
+    <None Include="shaders\cube_vertex_shader.vert" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

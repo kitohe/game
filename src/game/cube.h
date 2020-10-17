@@ -1,7 +1,11 @@
 #pragma once
 
+#include <vector>
+
 #include "shader_loader.h"
 #include "vbo.h"
+#include "attribute.h"
+
 
 class cube
 {

@@ -88,7 +88,7 @@
       <Filter>Source Files\engine</Filter>
     </ClCompile>
     <ClCompile Include="attribute.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\engine</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -144,14 +144,14 @@
       <Filter>Header Files\engine</Filter>
     </ClInclude>
     <ClInclude Include="attribute.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\engine</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="shaders\cube_fragment_shader.glsl">
+    <None Include="shaders\cube_vertex_shader.vert">
       <Filter>Resource Files\shaders</Filter>
     </None>
-    <None Include="shaders\cube_vertex_shader.glsl">
+    <None Include="shaders\cube_fragment_shader.frag">
       <Filter>Resource Files\shaders</Filter>
     </None>
   </ItemGroup>
