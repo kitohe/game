@@ -62,7 +62,10 @@ void cube::gen(shader_loader shader_loader)
 
 	cube_vao = std::make_unique<vao>(attrs);
 	cube_vao->create(GL_STATIC_DRAW, sizeof(vertices), vertices);
-	shader_loader.set_int("tex", 0);
+
+	uniform_int tex("tex");
+	tex.load_int(0);
+
 	cube_vao->unbind();
 }
 

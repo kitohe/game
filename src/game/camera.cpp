@@ -81,10 +81,6 @@ void camera::update_shader() const
     model.load_matrix(model_);
     view.load_matrix(view_);
     perspective.load_matrix(perspective_);
-
-    // shader_loader_.set_matrix4("model", model_);
-    // shader_loader_.set_matrix4("view", view_);
-    // shader_loader_.set_matrix4("perspective", perspective_);
 }
 
 void camera::init_camera(shader_loader& shader_loader)

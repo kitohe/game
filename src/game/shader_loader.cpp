@@ -83,37 +83,6 @@ GLuint shader_loader::get_shader_id() const
     return shader_id_;
 }
 
-void shader_loader::set_float(const GLchar* name, GLfloat value) const
-{
-	glUniform1f(glGetUniformLocation(shader_id_, name), value);
-}
-
-void shader_loader::set_int(const GLchar* name, GLint value) const
-{
-	glUniform1i(glGetUniformLocation(shader_id_, name), value);
-}
-
-void shader_loader::set_matrix4(const GLchar* name, glm::mat4 matrix) const
-{
-	glUniformMatrix4fv(glGetUniformLocation(shader_id_, name), 1, GL_FALSE, glm::value_ptr(matrix));
-}
-
-void shader_loader::set_vertex_attrib_pointer(const GLchar* name, int size, GLsizei stride, int offset) const
-{
-	GLuint attribute = glGetAttribLocation(shader_id_, name);
-	glEnableVertexAttribArray(attribute);
-	glVertexAttribPointer(attribute, size, GL_FLOAT, GL_FALSE, stride, (void*)(offset * sizeof(GLfloat)));
-}
-
-void shader_loader::store_uniform_locations(std::vector<uniform> uniforms) const
-{
-    for (auto item : uniforms)
-    {
-        item.store_uniform_location(shader_id_);
-    }
-    glValidateProgram(shader_id_);
-}
-
 void shader_loader::use_program() const
 {
     glUseProgram(shader_id_);

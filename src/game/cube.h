@@ -5,6 +5,7 @@
 #include "shader_loader.h"
 #include "vao.h"
 #include "attribute.h"
+#include "uniform_int.h"
 
 
 class cube

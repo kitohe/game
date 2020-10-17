@@ -28,7 +28,7 @@ public:
 
     window();
 
-    virtual ~window();
+    ~window();
 
     GLFWwindow* get_window() const;
 
