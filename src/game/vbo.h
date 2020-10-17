@@ -18,4 +18,3 @@ public:
     void store(GLsizeiptr size, GLintptr offset, const void* data) const;
     ~vbo();
 };
-

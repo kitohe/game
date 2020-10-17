@@ -23,7 +23,7 @@ void game::game_loop()
         
         cube.draw();              
         glfwSwapBuffers(window);
-        std::cout << noise_->get_perlin_noise(123,512) << std::endl;
+
         time::update_time(glfwGetTime());
         if (glfwGetTime() - start_time >= 1.0)
         {

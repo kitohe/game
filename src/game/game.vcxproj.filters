@@ -190,10 +190,10 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="shaders\cube_fragment_shader.glsl">
+    <None Include="shaders\cube_vertex_shader.vert">
       <Filter>Resource Files\shaders</Filter>
     </None>
-    <None Include="shaders\cube_vertex_shader.glsl">
+    <None Include="shaders\cube_fragment_shader.frag">
       <Filter>Resource Files\shaders</Filter>
     </None>
   </ItemGroup>

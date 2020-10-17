@@ -11,27 +11,38 @@ void vao::unbind() const
     glBindVertexArray(0);
 }
 
-void vao::link_attributes(std::vector<attribute>& attributes)
+void vao::create(GLenum usage, int data_size, const void* data)
 {
-    attributes_ = attributes;
-
-    for (const auto& attr : attributes)
+    if (attributes_.empty())
     {
-        attr.enable();
-        attr.set_pointer(attr.get_offset(), attr.get_stride());
+        std::cerr << "Cannot create VAO without attributes!" << std::endl;
+        return;
     }
+
+    if (data == nullptr)
+    {
+        std::cerr << "Data does not exist!" << std::endl;
+        return;
+    }
+
+    bind(); // I'm retarded
+
+    const std::shared_ptr<vbo> local_vbo = std::make_shared<vbo>(GL_ARRAY_BUFFER, usage);
+    
+    local_vbo->bind();
+	local_vbo->alloc_and_store(data_size, data);
+    vbos_.push_back(local_vbo);
+    link_attributes();
+    local_vbo->unbind();
+
+    unbind();
 }
 
-void vao::init(const void* data, GLenum usage, std::vector<attribute>& attributes)
+void vao::currently_bound_vao()
 {
-
-    vbo vbo(GL_FLOAT, usage);
-    vbo.bind();
-    vbo.alloc_and_store(sizeof(data), data);
-    vbo.unbind();
-    vbos_.push_back(vbo);
-
-    link_attributes(attributes);
+    GLint curr_vao;
+    glGetIntegerv(GL_VERTEX_ARRAY_BINDING, &curr_vao);
+    std::cout << "Currently bound VAO id: " << curr_vao << std::endl;
 }
 
 vao::~vao()
@@ -39,6 +50,6 @@ vao::~vao()
     glDeleteVertexArrays(1, &id_);
     for (const auto& vbo : vbos_)
     {
-        vbo.remove();
+        vbo->remove();
     }
 }
