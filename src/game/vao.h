@@ -17,7 +17,7 @@ class vao
     void link_attributes();
 
 public:
-    explicit vao(std::vector<attribute>& attributes);
+    explicit vao(std::vector<attribute>& attributes) : attributes_(attributes) {}
 
     void bind() const;
     void unbind() const;

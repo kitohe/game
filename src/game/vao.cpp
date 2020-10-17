@@ -1,5 +1,13 @@
 #include "vao.h"
 
+void vao::link_attributes()
+{
+    for (const auto& attr: attributes_)
+    {
+        attr.enable();
+        attr.link();
+    }
+}
 
 void vao::bind() const
 {

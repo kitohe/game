@@ -26,4 +26,10 @@ public:
 	GLuint get_shader_id() const;
 	void store_uniform_locations(std::vector<uniform> uniforms) const;
 	void use_program() const;
+
+	void set_float(const GLchar* name, GLfloat value) const;
+	void set_int(const GLchar* name, GLint value) const;
+	void set_matrix4(const GLchar* name, glm::mat4 matrix) const;
+
+	void set_vertex_attrib_pointer(const GLchar* name, int size, GLsizei stride, int offset) const;
 };
