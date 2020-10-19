@@ -9,16 +9,12 @@ void game::game_loop()
     cube cube;
     cube.gen(shader_loader_);
 
-    auto* window = window_.get_window();
+    auto* window = master_renderer_->get_window();
     glEnable(GL_DEPTH_TEST);
-    while (!glfwWindowShouldClose(window_.get_window()))
+    while (!glfwWindowShouldClose(window))
     {
-        glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
-        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-        glViewport(0, 0, window_width_, window_height_);
+        master_renderer_->render(*camera_);
         glfwGetFramebufferSize(window, &window_width_, &window_height_);
-        
-        camera_->update(window_.get_mouse_x_pos(), window_.get_mouse_y_pos());
         glfwPollEvents();
         
         cube.draw();              
@@ -53,6 +49,7 @@ void game::init_texture()
 
 game::game()
 {
+    master_renderer_ = std::make_unique<master_renderer>(true);
     camera_ = std::make_unique<camera>(shader_loader_);
     noise_ = std::make_unique<perlin_noise>(3, 0.35f, 10.0f);
 }

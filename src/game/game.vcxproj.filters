@@ -117,6 +117,9 @@
     <ClCompile Include="terrain_renderer.cpp">
       <Filter>Source Files\renderer</Filter>
     </ClCompile>
+    <ClCompile Include="master_renderer.cpp">
+      <Filter>Source Files\renderer</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="game.h">
@@ -186,6 +189,9 @@
       <Filter>Header Files\terrain</Filter>
     </ClInclude>
     <ClInclude Include="terrain_renderer.h">
+      <Filter>Header Files\renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="master_renderer.h">
       <Filter>Header Files\renderer</Filter>
     </ClInclude>
   </ItemGroup>

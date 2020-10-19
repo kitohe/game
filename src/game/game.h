@@ -3,9 +3,8 @@
 #include <memory>
 
 #include "game_constants.h"
-#include "window.h"
+#include "master_renderer.h"
 #include "shader_loader.h"
-#include "camera.h"
 #include "texture.h"
 #include "cube.h"
 #include "time.h"
@@ -15,12 +14,11 @@
 
 class game
 {
-    window window_;
-    shader_loader shader_loader_;
+    std::unique_ptr<master_renderer> master_renderer_;
     std::unique_ptr<camera> camera_;
-    texture texture_;
-
     std::unique_ptr<perlin_noise> noise_;
+    shader_loader shader_loader_;
+    texture texture_;
 
     int window_width_ = game_constants::game_window_width;
     int window_height_ = game_constants::game_window_height;

@@ -159,6 +159,7 @@
     <ClCompile Include="keyboard_binding.cpp" />
     <ClCompile Include="keyboard_event.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="master_renderer.cpp" />
     <ClCompile Include="perlin_noise.cpp" />
     <ClCompile Include="shader_loader.cpp" />
     <ClCompile Include="terrain.cpp" />
@@ -184,6 +185,7 @@
     <ClInclude Include="game_constants.h" />
     <ClInclude Include="keyboard_binding.h" />
     <ClInclude Include="keyboard_event.h" />
+    <ClInclude Include="master_renderer.h" />
     <ClInclude Include="perlin_noise.h" />
     <ClInclude Include="shader_loader.h" />
     <ClInclude Include="terrain.h" />
