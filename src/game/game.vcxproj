@@ -162,6 +162,7 @@
     <ClCompile Include="master_renderer.cpp" />
     <ClCompile Include="perlin_noise.cpp" />
     <ClCompile Include="shader_loader.cpp" />
+    <ClCompile Include="split_terrain_generator.cpp" />
     <ClCompile Include="terrain.cpp" />
     <ClCompile Include="terrain_generator.cpp" />
     <ClCompile Include="terrain_renderer.cpp" />
@@ -188,6 +189,7 @@
     <ClInclude Include="master_renderer.h" />
     <ClInclude Include="perlin_noise.h" />
     <ClInclude Include="shader_loader.h" />
+    <ClInclude Include="split_terrain_generator.h" />
     <ClInclude Include="terrain.h" />
     <ClInclude Include="terrain_generator.h" />
     <ClInclude Include="terrain_renderer.h" />
