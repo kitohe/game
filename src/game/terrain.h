@@ -15,8 +15,6 @@ class terrain
 
 public:
 
-    int abc = 42;
-
     terrain(vao& vao, terrain_renderer& renderer, uint32_t vertex_count) : vao_(vao), renderer_(renderer), vertex_count_(vertex_count) 
     { }
 

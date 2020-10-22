@@ -22,6 +22,4 @@ public:
     virtual ~terrain_generator() = default;
 
     terrain generate_terrain(uint32_t grid_size);
-
-    virtual void clean_up() = 0;
 };

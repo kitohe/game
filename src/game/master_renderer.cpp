@@ -6,8 +6,8 @@ void master_renderer::prepare() const
     glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     glProvokingVertex(GL_FIRST_VERTEX_CONVENTION);
-    glEnable(GL_DEPTH_TEST);
     glEnable(GL_CULL_FACE);
+    glEnable(GL_DEPTH_TEST);
 }
 
 void master_renderer::render(camera& cam) const
