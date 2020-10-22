@@ -22,7 +22,7 @@ std::vector<GLfloat> split_terrain_generator::calculate_terrain_data(std::vector
             auto top_left_normal = calculate_normal(top_left_triangle[0], top_left_triangle[1], top_left_triangle[2]);
             
             auto bot_right_triangle = get_triangle(coords, 2, 1, 3);
-            auto bot_right_normal= calculate_normal(bot_right_triangle[2], bot_right_triangle[1], bot_right_triangle[3]);
+            auto bot_right_normal= calculate_normal(bot_right_triangle[0], bot_right_triangle[1], bot_right_triangle[2]);
 
             // TODO: Add colors later
             add_triangle(data, top_left_triangle, top_left_normal);
@@ -46,7 +46,7 @@ std::vector<glm::vec3> split_terrain_generator::generate_quad_coords(int row, in
     return quad_positions;
 }
 
-terrain split_terrain_generator::build_terrain(std::vector<std::vector<float>> heights)
+std::unique_ptr<terrain> split_terrain_generator::build_terrain(std::vector<std::vector<float>> heights)
 {
     int vetex_count = calculate_vertex_count(heights.size());
     auto terr = calculate_terrain_data(heights);
@@ -55,11 +55,15 @@ terrain split_terrain_generator::build_terrain(std::vector<std::vector<float>> h
     attribute normals(1, 3, GL_FLOAT, 8 * sizeof(GLfloat), 3);
     attribute tex_coords(2, 3, GL_FLOAT, 8 * sizeof(GLfloat), 6);
 
-    std::vector<attribute> attrs { pos, normals, tex_coords };
+    attrs_ = std::make_unique<std::vector<attribute>>();
+    attrs_->push_back(pos);
+    attrs_->push_back(normals);
+    attrs_->push_back(tex_coords);
 
-    vao vao(attrs);
-    vao.create(GL_STATIC_DRAW, terr.size() * sizeof(GLfloat), &terr);
-    return terrain(vao, renderer_, vetex_count);
+    std::cout << "size: " << terr.size() * sizeof(GLfloat) << std::endl;
+    vao_ = std::make_unique<vao>(*attrs_);
+    vao_->create(GL_STATIC_DRAW, terr.size() * sizeof(GLfloat), &terr[0]);
+    return std::make_unique<terrain>(*vao_, renderer_, vetex_count);
 }
 
 std::vector<glm::vec3> split_terrain_generator::get_triangle(const std::vector<glm::vec3>& coords, int idx_a, int idx_b,
@@ -93,14 +97,14 @@ void split_terrain_generator::add_triangle(std::vector<GLfloat>& data, std::vect
         data.push_back(vertices[i][0]);
         data.push_back(vertices[i][1]);
         data.push_back(vertices[i][2]);
+
+        data.push_back(normal[0]);
+        data.push_back(normal[1]);
+        data.push_back(normal[2]);
+
+        // DO COLORS LATER, WHITE FOR NOW
+        data.push_back(1.0f);
+        data.push_back(1.0f);
+        data.push_back(1.0f);
     }
-
-    data.push_back(normal[0]);
-    data.push_back(normal[1]);
-    data.push_back(normal[2]);
-
-    // DO COLORS LATER, WHITE FOR NOW
-    data.push_back(1.0f);
-    data.push_back(1.0f);
-    data.push_back(1.0f);
 }

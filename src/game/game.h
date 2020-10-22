@@ -10,6 +10,7 @@
 #include "time.h"
 
 #include "perlin_noise.h"
+#include "split_terrain_generator.h"
 
 
 class game
@@ -17,6 +18,7 @@ class game
     std::unique_ptr<master_renderer> master_renderer_;
     std::unique_ptr<camera> camera_;
     std::unique_ptr<perlin_noise> noise_;
+    std::unique_ptr<terrain_generator> terrain_gen_;
     shader_loader shader_loader_;
     texture texture_;
 

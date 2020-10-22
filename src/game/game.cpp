@@ -1,13 +1,19 @@
 #include "game.h"
 
 
+
+
 void game::game_loop()
 {
     int frame_counter = 0;
     double start_time = glfwGetTime();
 
-    cube cube;
-    cube.gen(shader_loader_);
+    //cube cube;
+    //cube.gen(shader_loader_);
+
+    auto t = terrain_gen_->generate_terrain(10);
+
+
 
     auto* window = master_renderer_->get_window();
     glEnable(GL_DEPTH_TEST);
@@ -16,8 +22,8 @@ void game::game_loop()
         master_renderer_->render(*camera_);
         glfwGetFramebufferSize(window, &window_width_, &window_height_);
         glfwPollEvents();
-        
-        cube.draw();              
+
+        //cube.draw();              
         glfwSwapBuffers(window);
 
         time::update_time(glfwGetTime());
@@ -52,6 +58,7 @@ game::game()
     master_renderer_ = std::make_unique<master_renderer>(true);
     camera_ = std::make_unique<camera>(shader_loader_);
     noise_ = std::make_unique<perlin_noise>(3, 0.35f, 10.0f);
+    terrain_gen_ = std::make_unique<split_terrain_generator>(*noise_);
 }
 
 void game::draw_fps(const int fps) const

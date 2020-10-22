@@ -6,6 +6,10 @@
 class split_terrain_generator : public terrain_generator
 {
 
+    // temp
+    std::unique_ptr<vao> vao_;
+    std::unique_ptr<std::vector<attribute>> attrs_;
+
     terrain_renderer renderer_;
 
     int calculate_vertex_count(int grid_length) const;
@@ -28,5 +32,5 @@ public:
 
 protected:
 
-    terrain build_terrain(std::vector<std::vector<float>> heights) override;
+    std::unique_ptr<terrain> build_terrain(std::vector<std::vector<float>> heights) override;
 };
