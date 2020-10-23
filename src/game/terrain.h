@@ -11,7 +11,7 @@ class terrain
 {
     vao& vao_;
     terrain_renderer& renderer_;
-    uint32_t vertex_count_;
+    unsigned long long vertex_count_;
 
 public:
 
@@ -21,6 +21,6 @@ public:
     void render() const;
 
     [[nodiscard]] vao& get_vao() const { return vao_; }
-    [[nodiscard]] uint32_t get_vertex_count() const { return vertex_count_; }
+    [[nodiscard]] unsigned long long get_vertex_count() const { return vertex_count_; }
 };
 

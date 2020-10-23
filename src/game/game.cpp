@@ -9,7 +9,7 @@ void game::game_loop()
     //cube cube;
     //cube.gen(shader_loader_);
 
-    auto t = terrain_gen_->generate_terrain(10);
+    auto t = terrain_gen_->generate_terrain(100);
 
     auto* window = master_renderer_->get_window();
     glEnable(GL_DEPTH_TEST);

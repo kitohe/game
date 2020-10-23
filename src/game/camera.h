@@ -23,7 +23,7 @@ class camera
     glm::mat4 perspective_;
 
     const float camera_speed = 20.5f;
-    const float camera_sens = 0.1f;
+    const double camera_sens = 0.1f;
 
     double last_cursor_pos_x = static_cast<double>(game_constants::game_window_width) / 2;
     double last_cursor_pos_y = static_cast<double>(game_constants::game_window_height) / 2;

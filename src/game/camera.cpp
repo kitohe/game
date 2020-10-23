@@ -32,7 +32,7 @@ camera::camera(shader_loader& shader_loader) : shader_loader_(shader_loader)
     view_        = glm::lookAt(current_pos_, current_pos_ + center_, up_);
     perspective_ = glm::perspective(glm::radians(45.0f), 
                                         game_constants::game_window_aspect_ratio,
-                                        1.0f, 3000.0f);
+                                        0.5f, 3000.0f);
 }
 
 void camera::add_key_binds()

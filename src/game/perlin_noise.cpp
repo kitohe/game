@@ -40,7 +40,7 @@ float perlin_noise::get_smooth_noise(int x, int y)
 
 float perlin_noise::get_noise(int x, int y)
 {
-    std::seed_seq seed { x * 49632 + y * 325176 + seed_};
+    long seed = x * 49632 + y * 325176 + seed_;
     std::mt19937 engine(seed);
     std::uniform_real_distribution<float> dist(0.0f, 1.0f);
 
