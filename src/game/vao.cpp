@@ -9,6 +9,11 @@ void vao::link_attributes()
     }
 }
 
+vao::vao(std::vector<attribute>& attributes) : attributes_(attributes)
+{
+    glGenVertexArrays(1, &id_);
+}
+
 void vao::bind() const
 {
     glBindVertexArray(id_);
@@ -33,7 +38,7 @@ void vao::create(GLenum usage, int data_size, const void* data)
         return;
     }
 
-    bind(); // I'm retarded
+    bind();
 
     const std::shared_ptr<vbo> local_vbo = std::make_shared<vbo>(GL_ARRAY_BUFFER, usage);
     

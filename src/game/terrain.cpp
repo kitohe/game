@@ -1,6 +1,6 @@
 #include "terrain.h"
 
-void terrain::render(camera camera) const
+void terrain::render() const
 {
-    renderer_.render(this, camera);
+    renderer_.render(this);
 }

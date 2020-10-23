@@ -18,9 +18,9 @@ public:
     terrain(vao& vao, terrain_renderer& renderer, uint32_t vertex_count) : vao_(vao), renderer_(renderer), vertex_count_(vertex_count) 
     { }
 
-    void render(camera camera) const;
+    void render() const;
 
-    [[nodiscard]] vao get_vao() const { return vao_; };
+    [[nodiscard]] vao& get_vao() const { return vao_; }
     [[nodiscard]] uint32_t get_vertex_count() const { return vertex_count_; }
 };
 

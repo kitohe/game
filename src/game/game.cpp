@@ -1,8 +1,6 @@
 #include "game.h"
 
 
-
-
 void game::game_loop()
 {
     int frame_counter = 0;
@@ -13,13 +11,11 @@ void game::game_loop()
 
     auto t = terrain_gen_->generate_terrain(10);
 
-
-
     auto* window = master_renderer_->get_window();
     glEnable(GL_DEPTH_TEST);
     while (!glfwWindowShouldClose(window))
     {
-        master_renderer_->render(*camera_);
+        master_renderer_->render(*t,*camera_);
         glfwGetFramebufferSize(window, &window_width_, &window_height_);
         glfwPollEvents();
 

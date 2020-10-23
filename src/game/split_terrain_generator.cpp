@@ -42,7 +42,7 @@ std::vector<glm::vec3> split_terrain_generator::generate_quad_coords(int row, in
     quad_positions[1] = glm::vec3(col, heights[row + 1][col], row + 1);
     quad_positions[2] = glm::vec3(col + 1, heights[row][col + 1], row);
     quad_positions[3] = glm::vec3(col + 1, heights[row + 1][col + 1], row + 1);
-
+    
     return quad_positions;
 }
 
@@ -53,23 +53,24 @@ std::unique_ptr<terrain> split_terrain_generator::build_terrain(std::vector<std:
 
     attribute pos(0, 3, GL_FLOAT, 8 * sizeof(GLfloat), 0);
     attribute normals(1, 3, GL_FLOAT, 8 * sizeof(GLfloat), 3);
-    attribute tex_coords(2, 3, GL_FLOAT, 8 * sizeof(GLfloat), 6);
+    attribute tex_coords(2, 2, GL_FLOAT, 8 * sizeof(GLfloat), 6);
 
     attrs_ = std::make_unique<std::vector<attribute>>();
     attrs_->push_back(pos);
     attrs_->push_back(normals);
     attrs_->push_back(tex_coords);
 
-    std::cout << "size: " << terr.size() * sizeof(GLfloat) << std::endl;
     vao_ = std::make_unique<vao>(*attrs_);
     vao_->create(GL_STATIC_DRAW, terr.size() * sizeof(GLfloat), &terr[0]);
+    vao_->unbind();
+
     return std::make_unique<terrain>(*vao_, renderer_, vetex_count);
 }
 
 std::vector<glm::vec3> split_terrain_generator::get_triangle(const std::vector<glm::vec3>& coords, int idx_a, int idx_b,
     int idx_c)
 {
-    return std::vector<glm::vec3> { coords[idx_a], coords[idx_b], coords[idx_c] };
+    return { coords[idx_a], coords[idx_b], coords[idx_c] };
 }
 
 glm::vec3 split_terrain_generator::calculate_normal(glm::vec3 vert_0, glm::vec3 vert_1, glm::vec3 vert_2)
@@ -98,13 +99,13 @@ void split_terrain_generator::add_triangle(std::vector<GLfloat>& data, std::vect
         data.push_back(vertices[i][1]);
         data.push_back(vertices[i][2]);
 
-        data.push_back(normal[0]);
-        data.push_back(normal[1]);
-        data.push_back(normal[2]);
-
         // DO COLORS LATER, WHITE FOR NOW
         data.push_back(1.0f);
         data.push_back(1.0f);
         data.push_back(1.0f);
+
+        data.push_back(normal[0]);
+        data.push_back(normal[1]);
+        //data.push_back(normal[2]);
     }
 }

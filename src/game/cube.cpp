@@ -72,5 +72,6 @@ void cube::gen(shader_loader shader_loader)
 void cube::draw()
 {
     cube_vao->bind();
+    vao::currently_bound_vao();
     glDrawArrays(GL_TRIANGLES, 0, 36);
 }

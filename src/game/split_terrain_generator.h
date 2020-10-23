@@ -1,6 +1,7 @@
 #pragma once
 
 #include "terrain_generator.h"
+#include "uniform_int.h"
 
 
 class split_terrain_generator : public terrain_generator
@@ -14,7 +15,7 @@ class split_terrain_generator : public terrain_generator
 
     int calculate_vertex_count(int grid_length) const;
 
-    [[nodiscard]] std::vector<float> calculate_terrain_data(std::vector<std::vector<float>> heights);
+    [[nodiscard]] std::vector<GLfloat> calculate_terrain_data(std::vector<std::vector<float>> heights);
 
     std::vector<glm::vec3> generate_quad_coords(int row, int col, const std::vector<std::vector<float>>& heights);
 

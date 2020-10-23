@@ -9,5 +9,5 @@ class terrain_renderer
 {
 public:
 
-    void render(const terrain* terrain, camera camera) const;
+    void render(const terrain* terrain) const;
 };

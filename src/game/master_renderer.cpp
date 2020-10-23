@@ -10,8 +10,9 @@ void master_renderer::prepare() const
     glEnable(GL_DEPTH_TEST);
 }
 
-void master_renderer::render(camera& cam) const
+void master_renderer::render(terrain& terrain, camera& cam) const
 {
     prepare();
     cam.update(window_.get_mouse_x_pos(), window_.get_mouse_y_pos());
+    terrain.render();
 }
